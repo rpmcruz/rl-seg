@@ -46,9 +46,9 @@ class BDD10K(torch.utils.data.Dataset):
         return d
 
 class BDD10K_Binary(BDD10K):
-    num_classes = 1
+    num_classes = 2
     def __getitem__(self, i):
-        d = super()[i]
+        d = super().__getitem__(i)
         d['mask'] = d['mask'] >= 6
         return d
 
