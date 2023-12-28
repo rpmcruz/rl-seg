@@ -2,7 +2,7 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('output')
 parser.add_argument('--dataset', default='BDD10K_Binary')
-parser.add_argument('--epochs', type=int, default=1000)
+parser.add_argument('--epochs', type=int, default=100)
 parser.add_argument('--batchsize', type=int, default=32)
 parser.add_argument('--imgsize', type=int, default=2048)
 parser.add_argument('--nregions', type=int, default=8)

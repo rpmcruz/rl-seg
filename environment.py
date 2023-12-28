@@ -45,8 +45,9 @@ class Environment:
         self.iteration += 1
         if self.was_region_selected(action):
             return 0, False
-        preds = self.seg_model(self.image_regions[[action]])['out']  # (1, 1, 256, 256)
-        preds = torch.sigmoid(preds) >= 0.5
+        with torch.no_grad():
+            preds = self.seg_model(self.image_regions[[action]])['out']  # (1, 1, 256, 256)
+            preds = torch.sigmoid(preds) >= 0.5
         x = action % self.nregions
         y = action // self.nregions
         self.state[..., y, x] = self.latent[0]
